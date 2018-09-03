@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+导入约束：去核心包：hibernate-core-5.0.7.Final.jar
+在此包的这个位置：/org/hibernate/hibernate-mapping-3.0.dtd
+在这个文件的第十行：拷贝过来
+ -->
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 根标签 -->
+<hibernate-mapping>
+	<!-- class标签：实体类与数据库表的关系
+			name:类的全限定类名
+			table：表名
+	 -->
+	<class name="cn.itcast.entity.Customer" table="cst_customer">
+		<!-- id标签：配置主键属性 
+				name：类的属性
+				column:表的主键的字段
+		-->
+		<id name="custId" column="cust_id">
+			<!-- 主键策略:明天的内容 -->
+			<generator class="native"></generator>
+		</id>
+		<!-- property标签：其他的普通属性
+				name：类的属性
+				column:表的字段
+		 -->
+		<property name="custName" column="cust_name"/>
+		<property name="custSource" column="cust_source"/>
+		<property name="custIndustry" column="cust_industry"/>
+		<property name="custLevel" column="cust_level"/>
+		<property name="custAddress" column="cust_address"/>
+		<property name="custPhone" column="cust_phone"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+导入约束：去核心包：hibernate-core-5.0.7.Final.jar
+在此包的这个位置：/org/hibernate/hibernate-mapping-3.0.dtd
+在这个文件的第十行：拷贝过来
+ -->
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 根标签 -->
+<hibernate-mapping>
+	<!-- class标签：实体类与数据库表的关系
+			name:类的全限定类名
+			table：表名
+	 -->
+	<class name="cm.itcast.entity.LinkMan" table="cst_linkman">
+		<!-- id标签：配置主键属性 
+				name：类的属性
+				column:表的主键的字段
+		-->
+		<id name="lkmId" column="lkm_id">
+			<!-- 主键策略:明天的内容 -->
+			<generator class="native"></generator>
+		</id>
+		<!-- property标签：其他的普通属性
+				name：类的属性
+				column:表的字段
+		 -->
+		
+		<property name="lkmName" column="lkm_name"/>
+		<property name="lkmgender" column="lkm_gender"/>
+		<property name="lkmphone" column="lkm_phone"/>
+		<property name="lkmmobile" column="lkm_mobile"/>
+		<property name="lkmemail" column="lkm_email"/>
+		<property name="lkmposition" column="lkm_position"/>
+		<property name="lkmmemo" column="lkm_memo"/>
+	</class>
+</hibernate-mapping>

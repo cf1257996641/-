@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 导入约束：hibernate-core-5.0.7.Final.jar
+找这个文件：/org/hibernate/hibernate-configuration-3.0.dtd
+这个文件：第十行
+ -->
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<!-- 此文件的作用就是为了创建SessionFactory -->
+	<session-factory>
+	<!-- SessionFactory：创建Session【不是HttpSession】
+	这里面的配置有三部分：
+	里面的配置大家都能从这里找到：hibernate-release-5.0.7.Final\project\etc\hibernate.properties
+	 -->
+	<!-- 1、数据库的连接信息 ：打开上述的文件，搜索：MySQL-->
+	<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/javaee</property>
+	<property name="hibernate.connection.username">root</property>
+	<property name="hibernate.connection.password">root</property>
+	<!-- 2、Hibernate的基本配置  -->
+	<!-- 2.1 方言 -->
+	<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	<!-- 2.2 显示sql语句 -->
+	<property name="hibernate.show_sql">true</property>
+	<!-- 2.3 格式化sql语句 -->
+	<property name="hibernate.format_sql">true</property>
+	<!-- 2.4 让Hibernate来维护表结构:搜索：hbm2ddl 
+#hibernate.hbm2ddl.auto create-drop     先创建表，再删除表
+#hibernate.hbm2ddl.auto create 			每次都创建表，先删除表，再创建表
+#hibernate.hbm2ddl.auto update			没有表，就创建表；如果有表，就更新表【只能增加字段】   【常用】
+#hibernate.hbm2ddl.auto validate		不会创建表，只是验证我们的配置是否对
+	-->
+	<property name="hibernate.hbm2ddl.auto">update</property>
+	
+	<!-- 3、映射文件的位置 -->
+	<mapping resource="cn/itcast/entity/Customer.hbm.xml"/>
+	<mapping resource="cm/itcast/entity/LinkMan.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
